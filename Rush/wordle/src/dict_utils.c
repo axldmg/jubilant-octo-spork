@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   dict_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fle-blay <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: bschoeff <bschoeff@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 14:23:21 by fle-blay          #+#    #+#             */
-/*   Updated: 2022/05/15 15:23:46 by fle-blay         ###   ########.fr       */
+/*   Updated: 2022/05/16 20:51:23 by bschoeff         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	insert_dict_entry(t_game *game, char *buf)
 int	load_dict(t_game *game, char *file_name)
 {
 	FILE	*file;
-	char	buf[7]; 
+	char	buf[7];
 	size_t	read_ret;
 
 	file = fopen(file_name, "r");

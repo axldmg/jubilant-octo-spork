@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   word_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fle-blay <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: bschoeff <bschoeff@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 14:25:17 by fle-blay          #+#    #+#             */
-/*   Updated: 2022/05/15 16:37:21 by fle-blay         ###   ########.fr       */
+/*   Updated: 2022/05/16 20:51:40 by bschoeff         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int	verify_read_result(char *str)
 {
 	int		i;
 	int		len_str;
-	
+
 	if (!str)
 		return (0);
 	len_str = ft_strlen(str);
