@@ -6,7 +6,7 @@
 /*   By: bschoeff <bschoeff@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 08:54:34 by bschoeff          #+#    #+#             */
-/*   Updated: 2022/05/16 20:32:00 by bschoeff         ###   ########.fr       */
+/*   Updated: 2022/05/12 08:37:35 by bschoeff         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@ void	ft_bzero(void *s, size_t n)
 	char	*str;
 
 	str = s;
-	if (!str)
-		return ;
 	while (n)
 	{
 		*str = '\0';

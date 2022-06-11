@@ -1,24 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bschoeff <bschoeff@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/09 11:43:31 by bschoeff          #+#    #+#             */
-/*   Updated: 2022/06/11 14:48:54 by anclarma         ###   ########.fr       */
+/*   Created: 2022/01/27 23:02:47 by anclarma          #+#    #+#             */
+/*   Updated: 2022/06/11 15:56:10 by bschoeff         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
+#include <stdlib.h>
+#include <stddef.h>
 #include "libft.h"
 
-void	ft_putstr_fd(char *s, int fd)
+int	get_next_line(int fd, char **line)
 {
 	ssize_t	ret;
+	char	*str;
+	char	*tmp;
+	char	buf[2];
 
-	if (!s)
-		return ;
-	ret = write(fd, s, ft_strlen(s));
-	(void)ret;
+	ret = read(fd, buf, 1);
+	buf[1] = '\0';
+	if (ret <= 0)
+		return ((int)ret);
+	str = ft_strdup("");
+	if (!str)
+		return (-1);
+	while (ret > 0 && buf[0] != '\n')
+	{
+		tmp = str;
+		str = ft_strjoin(tmp, buf);
+		if (!str)
+			return (-1);
+		free(tmp);
+		ret = read(fd, buf, 1);
+	}
+	*line = str;
+	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: bschoeff <bschoeff@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 16:32:24 by bschoeff          #+#    #+#             */
-/*   Updated: 2022/05/12 08:45:49 by bschoeff         ###   ########.fr       */
+/*   Updated: 2022/06/11 20:08:40 by bschoeff         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,7 @@ size_t	ft_strlen(const char *s)
 	size_t	len;
 
 	len = 0;
-	while (*s)
-	{
+	while (s[len])
 		len++;
-		s++;
-	}
 	return (len);
 }

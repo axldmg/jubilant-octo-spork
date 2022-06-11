@@ -1,24 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bschoeff <bschoeff@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/09 11:43:31 by bschoeff          #+#    #+#             */
-/*   Updated: 2022/06/11 14:48:54 by anclarma         ###   ########.fr       */
+/*   Created: 2022/05/17 16:33:37 by bschoeff          #+#    #+#             */
+/*   Updated: 2022/05/19 08:02:07 by bschoeff         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include "libft.h"
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
-void	ft_putstr_fd(char *s, int fd)
-{
-	ssize_t	ret;
+# include <stdarg.h>
+# include <stdio.h>
+# include <unistd.h>
 
-	if (!s)
-		return ;
-	ret = write(fd, s, ft_strlen(s));
-	(void)ret;
-}
+int	ft_printf(const char *fmt, ...);
+int	ft_putchar(char c);
+int	ft_putstr(char *s);
+int	ft_putptr(unsigned long n, char *base, int start);
+int	ft_putnbr(int n);
+int	ft_put_unbr(unsigned int n);
+int	ft_puthx(unsigned long n, char *base);
+
+#endif

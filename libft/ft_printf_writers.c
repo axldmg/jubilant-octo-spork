@@ -1,24 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_printf_writers.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bschoeff <bschoeff@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/09 11:43:31 by bschoeff          #+#    #+#             */
-/*   Updated: 2022/06/11 14:48:54 by anclarma         ###   ########.fr       */
+/*   Created: 2022/05/18 19:40:08 by bschoeff          #+#    #+#             */
+/*   Updated: 2022/05/19 10:13:07 by bschoeff         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include "libft.h"
+#include "ft_printf.h"
 
-void	ft_putstr_fd(char *s, int fd)
+int	ft_putchar(char c)
 {
-	ssize_t	ret;
+	write(1, &c, 1);
+	return (1);
+}
+
+int	ft_putstr(char *s)
+{
+	int	i;
 
 	if (!s)
-		return ;
-	ret = write(fd, s, ft_strlen(s));
-	(void)ret;
+		return (ft_putstr("(null)"));
+	i = 0;
+	while (s[i])
+	{
+		write(1, &s[i], 1);
+		i++;
+	}
+	return (i);
 }
