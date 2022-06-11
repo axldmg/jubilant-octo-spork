@@ -1,8 +1,0 @@
-make --dry-run --always-make --keep-going --print-directory
-make: Entering directory `/Users/axldmg/Documents/Git/jubilant-octo-spork/printf'
-gcc -Wall -Wextra -Werror -c ft_printf.c -I .
-gcc -Wall -Wextra -Werror -c ft_printf_helpers.c -I .
-gcc -Wall -Wextra -Werror -c ft_printf_writers.c -I .
-ar -rc libftprintf.a ft_printf.o ft_printf_helpers.o ft_printf_writers.o
-make: Leaving directory `/Users/axldmg/Documents/Git/jubilant-octo-spork/printf'
- 
