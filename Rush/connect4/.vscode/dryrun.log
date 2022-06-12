@@ -1,0 +1,17 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory `/Users/axldmg/Documents/42Cursus/connect4'
+mkdir -p objs
+ 
+make -C libft all
+cc -Wall -Wextra -Werror -MMD -MP -I ./inc -I ./libft -c src/main.c -o objs/main.o
+ 
+cc -Wall -Wextra -Werror -MMD -MP -I ./inc -I ./libft -c src/parsing.c -o objs/parsing.o
+cc -Wall -Wextra -Werror -MMD -MP -I ./inc -I ./libft -c src/display.c -o objs/display.o
+cc -Wall -Wextra -Werror -MMD -MP -I ./inc -I ./libft -c src/ai.c -o objs/ai.o
+cc -Wall -Wextra -Werror -MMD -MP -I ./inc -I ./libft -c src/player.c -o objs/player.o
+ 
+cc -Wall -Wextra -Werror -MMD -MP -I ./inc -I ./libft -c src/game.c -o objs/game.o
+cc -Wall -Wextra -Werror -MMD -MP -I ./inc -I ./libft -c src/eval.c -o objs/eval.o
+cc  objs/main.o  objs/parsing.o  objs/display.o  objs/ai.o  objs/player.o  objs/game.o  objs/eval.o  -L ./libft -lft -o connect4
+make: Leaving directory `/Users/axldmg/Documents/42Cursus/connect4'
+ 
