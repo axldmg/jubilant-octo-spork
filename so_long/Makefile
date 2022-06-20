@@ -5,77 +5,37 @@
 #                                                     +:+ +:+         +:+      #
 #    By: bschoeff <bschoeff@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/06/11 18:13:30 by anclarma          #+#    #+#              #
-#    Updated: 2022/06/11 23:10:54 by bschoeff         ###   ########.fr        #
+#    Created: 2022/06/11 12:36:33 by anclarma          #+#    #+#              #
+#    Updated: 2022/06/16 10:50:34 by bschoeff         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # ################################## #
 #               COMMAND              #
 # ################################## #
-CC			= cc
+CC			= gcc
 MKDIR		= mkdir -p
 RM			= rm -rf
-AR			= ar -rc
 
 # ################################## #
-#              LIB NAME              #
+#              EXEC NAME             #
 # ################################## #
-NAME		= libft.a
+NAME		= so_long
 
 # ################################## #
 #               SOURCES              #
 # ################################## #
-C_DIR		= .
-C_FILES		= ft_atoi.c	\
-			  ft_calloc.c	\
-			  ft_isascii.c	\
-			  ft_bzero.c	\
-			  ft_isalnum.c	\
-			  ft_isalpha.c	\
-			  ft_isdigit.c	\
-			  ft_isprint.c	\
-			  ft_memchr.c	\
-			  ft_memcmp.c	\
-			  ft_memcpy.c	\
-			  ft_strdup.c	\
-			  ft_memmove.c	\
-			  ft_memset.c	\
-			  ft_strchr.c	\
-			  ft_strlcat.c	\
-			  ft_strlcpy.c	\
-			  ft_strlen.c	\
-			  ft_strncmp.c	\
-			  ft_strnstr.c	\
-			  ft_strrchr.c	\
-			  ft_tolower.c	\
-			  ft_toupper.c	\
-			  ft_substr.c	\
-			  ft_strjoin.c	\
-			  ft_strtrim.c	\
-			  ft_split.c	\
-			  ft_itoa.c		\
-			  ft_strmapi.c	\
-			  ft_striteri.c	\
-			  ft_putchar_fd.c	\
-			  ft_putstr_fd.c	\
-			  ft_putendl_fd.c	\
-			  ft_putnbr_fd.c	\
-			  ft_printf.c		\
-			  ft_printf_helpers.c	\
-			  ft_printf_writers.c	\
-			  ft_secure_atoi.c	\
-			  get_next_line.c	\
-			  ft_isspace.c		\
-			  ft_lstadd_back.c	\
-			  ft_lstadd_front.c	\
-			  ft_lstsize.c		\
-			  ft_lstlast.c		\
-			  ft_lstdelone.c	\
-			  ft_lstclear.c		\
-			  ft_lstiter.c		\
-			  ft_lstmap.c		\
-			  ft_lstnew.c
+C_DIR		= src
+C_FILES		= compliance.c	\
+			  destroy.c		\
+			  directions.c	\
+			  display.c		\
+			  game.c		\
+			  initialize.c	\
+			  main.c		\
+			  parsing.c		\
+			  push_tiles.c
+
 SRCS		= $(patsubst %, $(C_DIR)/%, $(C_FILES))
 
 # ################################## #
@@ -88,11 +48,15 @@ OBJS		= $(patsubst %, $(O_DIR)/%, $(O_FILES))
 # ################################## #
 #                FLAGS               #
 # ################################## #
-CFLAGS		= -Wall -Wextra -Werror -MMD -MP
-CFLAGS		+= -std=c90
-LFLAGS		=
-CINCLUDES	=
-CLIBS		=
+CFLAGS		= -Wall -Wextra -Werror
+LFLAGS		= 
+CINCLUDES	= -I ./inc	\
+			  -I ./lib/libft \
+			  -I ./lib/mlx_linux
+
+LIBFT		= ./lib/libft/libft.a
+LIBMLX		= ./lib/mlx_linux/mlx.a
+CLIBS		= -L ./lib/libft -lft -L ./lib/mlx_linux -lmlx -lX11 -lXext
 
 # ################################## #
 #                RULES               #
@@ -115,14 +79,21 @@ check:	LFLAGS		+=  -fsanitize=undefined
 check:	LFLAGS		+=  -g3
 check:	${NAME}
 
-$(NAME):	$(O_DIR) $(OBJS)
-			$(AR) $@ $(OBJS)
+$(NAME):	$(O_DIR) $(LIBFT) $(LIBMLX) $(OBJS)
+			$(CC) $(OBJS) $(LFLAGS) $(CLIBS) -o $@
 
 $(O_DIR):
 			$(MKDIR) $(O_DIR)
 
+$(LIBFT):
+			make -C ./lib/libft
+$(LIBMLX) :
+			make -C ./lib/mlx_linux
+
 clean:
 			$(RM) $(O_DIR)
+			make -C ./lib/libft fclean
+			make -C ./lib/mlx_linux clean
 
 fclean:		clean
 			$(RM) $(NAME)

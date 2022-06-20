@@ -6,7 +6,7 @@
 /*   By: bschoeff <bschoeff@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 15:12:53 by bschoeff          #+#    #+#             */
-/*   Updated: 2022/06/11 16:22:59 by bschoeff         ###   ########.fr       */
+/*   Updated: 2022/06/13 07:58:56 by bschoeff         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stdio.h>
 # include <unistd.h>
 # include "ft_printf.h"
+# include "get_next_line.h"
 
 typedef struct s_list
 {
@@ -68,7 +69,6 @@ void		ft_lstclear(t_list **lst, void (*del)(void *));
 void		ft_lstiter(t_list *lst, void (*f)(void *));
 t_list		*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 int			ft_secure_atoi(const char *str);
-int			get_next_line(int fd, char **line);
 int			ft_isspace(int c);
 
 #endif
