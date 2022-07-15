@@ -1,0 +1,49 @@
+.vscode
+.DS_Store
+.nfs*
+# Prerequisites
+*.d
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+*.smod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+push_swap
+
+# Swap
+*.swp
+
+# Checker provided
+checker_linux
+checker_mac
+checker
+push_swap_tester
+pyviz.py
+psTester
+PTSD
+psT
